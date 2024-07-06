@@ -1,12 +1,10 @@
 package com.techrevamp.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,15 +13,15 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "shopping_carts")
 public class ShoppingCart {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long cart_id;
-  
-  @ManyToOne()
-  @JoinColumn(name = "user_id", referencedColumnName = "user_id")
-  private User user_id;
-  
-  @Column(name = "creation_date", nullable = false)
-  private Timestamp creation_date;
-  
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long cart_id;
+
+    @OneToOne
+    @JoinColumn(name = "user_id", nullable = false, unique = true)
+    private User user;
+
+    @Column(name = "creation_date", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date creationDate = new Date();
 }

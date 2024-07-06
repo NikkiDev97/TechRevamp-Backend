@@ -1,10 +1,7 @@
 package com.techrevamp.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.sql.Timestamp;
 
@@ -12,18 +9,24 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
+@EqualsAndHashCode
 @Entity
 @Table(name = "shopping_cart_products")
 public class ShoppingCartProduct {
-  
-  @ManyToMany()
-  @JoinColumn(name = "cart_id", referencedColumnName = "cart_id", nullable = false)
-  private ShoppingCart cart_id;
-  
-  @ManyToMany()
-  @JoinColumn(name = "product_id", referencedColumnName = "product_id", nullable = false)
-  private Product product_id;
-  
+  @EmbeddedId
+  private ShoppingCartProductKey id;
+
   @Column(name = "quantity", nullable = false)
-  private Integer quantity;
+  private int quantity;
+
+  @ManyToOne
+  @MapsId("cartId")
+  @JoinColumn(name = "cart_id")
+  private ShoppingCart shoppingCart;
+
+  @ManyToOne
+  @MapsId("productId")
+  @JoinColumn(name = "product_id")
+  private Product product;
 }
