@@ -13,7 +13,7 @@ import java.io.Serializable;
 @ToString
 @EqualsAndHashCode
 @Embeddable
-class OrderProductKey implements Serializable {
+public class OrderProductKey implements Serializable {
     @Column(name = "order_id")
     private Long orderId;
 
