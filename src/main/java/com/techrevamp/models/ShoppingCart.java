@@ -4,13 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.sql.Timestamp;
-import java.util.Collection;
-import java.util.Date;
-
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
+//@Data engloba todo lo que necesitamos en un models
+@Data
 @Entity
 @Table(name = "shopping_carts")
 public class ShoppingCart {
@@ -23,6 +18,5 @@ public class ShoppingCart {
     private User user;
 
     @Column(name = "creation_date", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date creationDate = new Date();
+    private Timestamp creationDate;
 }
