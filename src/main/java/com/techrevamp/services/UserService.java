@@ -7,40 +7,41 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
 
-    private final List<User> users = new ArrayList<>();
+    @Autowired
+    private UserRepository userRepository;
 
     public List<User> getAllUsers() {
-        return users;
+        return userRepository.findAll();
     }
 
     public User getUserById(Long userId) {
-        return users.stream()
-                .filter(user -> user.getUserId().equals(userId))
-                .findFirst()
-                .orElse(null);
+        Optional<User> userOptional = userRepository.findById(userId);
+        return userOptional.orElse(null);
     }
 
     public User createUser(User user) {
-        users.add(user);
-        return user;
+        return userRepository.save(user);
     }
 
-    public User updateUser(Long userId, User updatedUser) {
-        User existingUser = getUserById(userId);
-        if (existingUser != null) {
-            existingUser.setFirstName(updatedUser.getFirstName());
-            existingUser.setLastName(updatedUser.getLastName());
-            existingUser.setEmail(updatedUser.getEmail());
-            existingUser.setPassword(updatedUser.getPassword());
+    public User updateUser(Long userId, User user) {
+        Optional<User> userOptional = userRepository.findById(userId);
+        if (userOptional.isPresent()) {
+            User existingUser = userOptional.get();
+            existingUser.setFirstName(user.getFirstName());
+            existingUser.setLastName(user.getLastName());
+            existingUser.setEmail(user.getEmail());
+            existingUser.setPassword(user.getPassword());
+            return userRepository.save(existingUser);
         }
-        return existingUser;
+        return null;
     }
 
     public void deleteUser(Long userId) {
-        users.removeIf(user -> user.getUserId().equals(userId));
+        userRepository.deleteById(userId);
     }
 }
