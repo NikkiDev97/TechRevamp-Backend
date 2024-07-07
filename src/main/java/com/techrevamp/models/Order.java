@@ -1,10 +1,7 @@
 package com.techrevamp.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.sql.Timestamp;
 
@@ -12,20 +9,21 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 @Entity
 @Table(name = "orders")
 public class Order {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long order_id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long orderId;
 
-  @ManyToOne
-  @JoinColumn(name = "user_id", referencedColumnName = "user_id")
-  private User user_id;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User userId;
 
-  @Column(name = "order_code", nullable = false)
-  private String order_code;
+    @Column(name = "order_code", nullable = false, unique = true)
+    private String orderCode;
 
-  @Column(name = "order_date", nullable = false)
-  private Timestamp order_date;
+    @Column(name = "order_date", nullable = false)
+    private Timestamp orderDate;
 }
