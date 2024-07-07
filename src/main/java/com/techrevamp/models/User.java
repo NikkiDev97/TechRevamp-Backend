@@ -3,6 +3,7 @@ package com.techrevamp.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+//@Data engloba todo lo que necesitamos en un models
 @Data
 @Entity
 @Table(name = "users")

@@ -7,6 +7,7 @@ import lombok.*;
 import java.io.Serializable;
 import jakarta.persistence.*;
 
+//@Data engloba todo lo que necesitamos en un models
 @Data
 @Entity
 @Embeddable

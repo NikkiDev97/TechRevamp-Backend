@@ -6,6 +6,7 @@ import lombok.*;
 
 import java.io.Serializable;
 
+//@Data engloba todo lo que necesitamos en un models
 @Data
 @Embeddable
 class ShoppingCartProductKey implements Serializable {

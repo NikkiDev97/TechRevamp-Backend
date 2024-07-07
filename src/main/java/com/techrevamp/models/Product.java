@@ -5,7 +5,7 @@ import lombok.*;
 
 import java.math.BigDecimal;
 
-
+//@Data engloba todo lo que necesitamos en un models
 @Data
 @Entity
 @Table(name = "products")
