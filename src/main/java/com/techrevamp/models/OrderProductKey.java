@@ -5,13 +5,10 @@ import jakarta.persistence.Embeddable;
 import lombok.*;
 
 import java.io.Serializable;
+import jakarta.persistence.*;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
-@ToString
-@EqualsAndHashCode
+@Data
+@Entity
 @Embeddable
 public class OrderProductKey implements Serializable {
     @Column(name = "order_id")

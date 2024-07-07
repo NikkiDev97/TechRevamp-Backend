@@ -3,10 +3,7 @@ package com.techrevamp.models;
 import jakarta.persistence.*;
 import lombok.*;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
+@Data
 @Entity
 @Table(name = "shipping_addresses")
 public class ShippingAddress {

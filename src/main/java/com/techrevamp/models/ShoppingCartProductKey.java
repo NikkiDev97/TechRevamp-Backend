@@ -6,12 +6,7 @@ import lombok.*;
 
 import java.io.Serializable;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
-@ToString
-@EqualsAndHashCode
+@Data
 @Embeddable
 class ShoppingCartProductKey implements Serializable {
     @Column(name = "cart_id")
