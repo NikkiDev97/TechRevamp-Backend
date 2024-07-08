@@ -47,4 +47,16 @@ public class ProductService {
     public void deleteProduct(Long productId) {
         productRepository.deleteById(productId);
     }
+
+    public List<Product> getProductsByCategory(String category) {
+        return productRepository.findByCategory(category);
+    }
+
+    public List<Product> getProductsByName(String name) {
+        return productRepository.findByName(name);
+    }
+
+    public List<Product> getProductsByPriceRange(Double minPrice, Double maxPrice) {
+        return productRepository.findByPriceBetween(minPrice, maxPrice);
+    }
 }

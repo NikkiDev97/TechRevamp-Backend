@@ -7,6 +7,7 @@ import com.techrevamp.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,5 +60,17 @@ public class OrderService {
 
     public void deleteOrder(Long orderId) {
         orderRepository.deleteById(orderId);
+    }
+
+    /*public List<Order> getOrdersByUserId(Long userId) {
+        return orderRepository.findByUserId(userId);
+    }*/
+
+    public List<Order> getOrdersByOrderDate(Date orderDate) {
+        return orderRepository.findByOrderDate(orderDate);
+    }
+
+    public Order getOrderByOrderCode(String orderCode) {
+        return orderRepository.findByOrderCode(orderCode);
     }
 }

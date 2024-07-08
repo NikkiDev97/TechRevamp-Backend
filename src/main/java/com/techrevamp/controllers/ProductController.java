@@ -52,4 +52,19 @@ public class ProductController {
         productService.deleteProduct(productId);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/category/{category}")
+    public List<Product> getProductsByCategory(@PathVariable String category) {
+        return productService.getProductsByCategory(category);
+    }
+
+    @GetMapping("/name/{name}")
+    public List<Product> getProductsByName(@PathVariable String name) {
+        return productService.getProductsByName(name);
+    }
+
+    @GetMapping("/price-range")
+    public List<Product> getProductsByPriceRange(@RequestParam Double minPrice, @RequestParam Double maxPrice) {
+        return productService.getProductsByPriceRange(minPrice, maxPrice);
+    }
 }

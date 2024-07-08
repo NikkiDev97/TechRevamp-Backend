@@ -3,10 +3,12 @@ package com.techrevamp.controllers;
 import com.techrevamp.models.Order;
 import com.techrevamp.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -52,4 +54,21 @@ public class OrderController {
         orderService.deleteOrder(orderId);
         return ResponseEntity.noContent().build();
     }
+
+    /*@GetMapping("/user/{userId}")
+    public List<Order> getOrdersByUserId(@PathVariable Long userId) {
+        return orderService.getOrdersByUserId(userId);
+    }*/
+
+    //formato ISO de fecha (yyyy-MM-dd).
+    @GetMapping("/date/{orderDate}")
+    public List<Order> getOrdersByOrderDate(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date orderDate) {
+        return orderService.getOrdersByOrderDate(orderDate);
+    }
+
+    @GetMapping("/code/{orderCode}")
+    public Order getOrderByOrderCode(@PathVariable String orderCode) {
+        return orderService.getOrderByOrderCode(orderCode);
+    }
+
 }

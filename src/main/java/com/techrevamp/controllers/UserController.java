@@ -52,4 +52,34 @@ public class UserController {
         userService.deleteUser(userId);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/email/{email}")
+    public ResponseEntity<List<User>> getUsersByEmail(@PathVariable String email) {
+        List<User> users = userService.findByEmail(email);
+        return ResponseEntity.ok().body(users);
+    }
+    @GetMapping("/firstName/{firstName}")
+    public ResponseEntity<List<User>> getUsersByFirstName(@PathVariable String firstName) {
+        List<User> users = userService.findByFirstName(firstName);
+        return ResponseEntity.ok().body(users);
+    }
+
+    @GetMapping("/lastName/{lastName}")
+    public ResponseEntity<List<User>> getUsersByLastName(@PathVariable String lastName) {
+        List<User> users = userService.findByLastName(lastName);
+        return ResponseEntity.ok().body(users);
+    }
+
+    @GetMapping("/fullName/{fullName}")
+    public ResponseEntity<List<User>> getUsersByFullName(@PathVariable String fullName) {
+        List<User> users = userService.findByFullName(fullName);
+        return ResponseEntity.ok().body(users);
+    }
+
+    @GetMapping("/loggedIn")
+    public ResponseEntity<List<User>> getLoggedInUsers() {
+        List<User> users = userService.findLoggedInUsers();
+        return ResponseEntity.ok().body(users);
+    }
+
 }
