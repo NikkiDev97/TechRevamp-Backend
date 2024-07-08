@@ -17,7 +17,6 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User userId;
-    //No tendría que ser tipo Long¿?
 
     @Column(name = "order_code", nullable = false, unique = true)
     private String orderCode;

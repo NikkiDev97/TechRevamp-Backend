@@ -1,7 +1,9 @@
 package com.techrevamp.services;
 
 import com.techrevamp.models.ShoppingCart;
+import com.techrevamp.models.ShoppingCartProduct;
 import com.techrevamp.repositories.ShoppingCartRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,4 +40,22 @@ public class ShoppingCartService {
     public void deleteShoppingCart(Long cartId) {
         shoppingCartRepository.deleteById(cartId);
     }
+    
+    
+//    // Método para obtener productos en un carrito en específico
+//    public List<ShoppingCartProduct> getProductsInCart(Long cartId) {
+//        return shoppingCartRepository.findProductsByCartId(cartId);
+//    }
+//
+//    // Método para eliminar un producto del carrito específico
+//    @Transactional
+//    public void removeProductFromCart(Long cartId, Long productId) {
+//        shoppingCartRepository.deleteProductFromCart(cartId, productId);
+//    }
+//
+//    // Método para actualizar la cantidad de un producto en carrito específico
+//    @Transactional
+//    public void updateProductQuantityInCart(Long cartId, Long productId, int quantity) {
+//        shoppingCartRepository.updateProductQuantityInCart(cartId, productId, quantity);
+//    }
 }

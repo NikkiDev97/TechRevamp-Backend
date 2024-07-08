@@ -7,11 +7,10 @@ import lombok.*;
 import java.io.Serializable;
 import jakarta.persistence.*;
 
-//@Data engloba todo lo que necesitamos en un models
+// @Data engloba todo lo que necesitamos en un models
 @Data
-@Entity
 @Embeddable
-public class OrderProductKey implements Serializable {
+class OrderProductKey implements Serializable {
     @Column(name = "order_id")
     private Long orderId;
 
