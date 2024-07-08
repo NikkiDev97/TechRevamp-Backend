@@ -3,14 +3,8 @@ package com.techrevamp.models;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.sql.Timestamp;
-
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
-@ToString
-@EqualsAndHashCode
+//@Data engloba todo lo que necesitamos en un models
+@Data
 @Entity
 @Table(name = "shopping_cart_products")
 public class ShoppingCartProduct {

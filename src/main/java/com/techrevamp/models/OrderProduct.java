@@ -3,12 +3,8 @@ package com.techrevamp.models;
 import jakarta.persistence.*;
 import lombok.*;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
-@ToString
-@EqualsAndHashCode
+//@Data engloba todo lo que necesitamos en un models
+@Data
 @Entity
 @Table(name = "order_products")
 public class OrderProduct {

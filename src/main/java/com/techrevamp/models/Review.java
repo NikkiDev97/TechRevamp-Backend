@@ -7,11 +7,8 @@ import lombok.*;
 
 import java.sql.Timestamp;
 
-
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
+//@Data engloba todo lo que necesitamos en un models
+@Data
 @Entity
 @Table(name = "reviews")
 public class Review {

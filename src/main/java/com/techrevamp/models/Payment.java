@@ -1,17 +1,12 @@
 package com.techrevamp.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.sql.Timestamp;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
+//@Data engloba todo lo que necesitamos en un models
+@Data
 @Entity
 @Table(name = "payments")
 public class Payment {
