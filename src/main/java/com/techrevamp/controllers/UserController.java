@@ -1,6 +1,8 @@
 package com.techrevamp.controllers;
 
+import com.techrevamp.models.Order;
 import com.techrevamp.models.User;
+import com.techrevamp.services.OrderService;
 import com.techrevamp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -81,5 +83,9 @@ public class UserController {
         List<User> users = userService.findLoggedInUsers();
         return ResponseEntity.ok().body(users);
     }
-
+    
+    @GetMapping("/order/{userId}")
+    public List<Order> getOrdersByUserId(@PathVariable Long userId) {
+        return userService.getOrdersByUserId(userId);
+    }
 }

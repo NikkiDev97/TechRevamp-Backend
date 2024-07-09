@@ -43,11 +43,11 @@ public class OrderService {
             if (updatedOrder.getOrderCode() != null) {
                 existingOrder.setOrderCode(updatedOrder.getOrderCode());
             }
-            User updatedUser = updatedOrder.getUserId();
+            User updatedUser = updatedOrder.getUser();
             if (updatedUser != null) {
                 Optional<User> userOptional = userRepository.findById(updatedUser.getUserId());
                 if (userOptional.isPresent()) {
-                    existingOrder.setUserId(userOptional.get());
+                    existingOrder.setUser(userOptional.get());
                 } else {
                     throw new RuntimeException("El usuario especificado no existe en la base de datos.");
                 }
@@ -61,10 +61,13 @@ public class OrderService {
     public void deleteOrder(Long orderId) {
         orderRepository.deleteById(orderId);
     }
-
-    /*public List<Order> getOrdersByUserId(Long userId) {
-        return orderRepository.findByUserId(userId);
-    }*/
+    
+    
+//    public List<Order> getOrdersByUserId(Long userId) {
+//        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("No se encontraron órdenes"));
+//        return user.getOrders();
+//    }
+    
 
     public List<Order> getOrdersByOrderDate(Date orderDate) {
         return orderRepository.findByOrderDate(orderDate);

@@ -11,11 +11,11 @@ import java.sql.Timestamp;
 public class ShoppingCart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long cart_id;
+    private Long cartId;
 
     @OneToOne
     @JoinColumn(name = "user_id", nullable = false, unique = true)
-    private User user;
+    private User userId;
 
     @Column(name = "creation_date", nullable = false)
     private Timestamp creationDate;

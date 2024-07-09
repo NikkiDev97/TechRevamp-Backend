@@ -19,11 +19,10 @@ public class OrderProduct {
     @ManyToOne
     @MapsId("orderId")
     @JoinColumn(name = "order_id", nullable = false)
-    private Order order;
+    private Order orderId;
 
     @ManyToOne
     @MapsId("productId")
     @JoinColumn(name = "product_id")
-    private Product product;
-    
+    private Product productId;
 }

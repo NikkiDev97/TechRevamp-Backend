@@ -11,11 +11,11 @@ import lombok.*;
 public class ShippingAddress {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long address_id;
+  private Long addressId;
 
   @ManyToOne
   @JoinColumn(name = "user_id", nullable = false)
-  private User user;
+  private User userId;
 
   @Column(name = "street", nullable = false)
   private String street;

@@ -25,4 +25,7 @@ public class Product {
 
     @Column(name = "category", nullable = false)
     private String category;
+    
+    @Column(name = "stock", nullable = false)
+    private int stock;
 }

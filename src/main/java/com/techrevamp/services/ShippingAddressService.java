@@ -39,7 +39,7 @@ public class ShippingAddressService {
         Optional<ShippingAddress> addressOptional = shippingAddressRepository.findById(addressId);
         if (addressOptional.isPresent()) {
             ShippingAddress existingAddress = addressOptional.get();
-            existingAddress.setUser(updatedAddress.getUser());
+            existingAddress.setUserId(updatedAddress.getUserId());
             existingAddress.setStreet(updatedAddress.getStreet());
             existingAddress.setCity(updatedAddress.getCity());
             existingAddress.setState(updatedAddress.getState());

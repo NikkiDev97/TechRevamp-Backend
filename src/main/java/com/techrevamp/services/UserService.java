@@ -1,6 +1,8 @@
 package com.techrevamp.services;
 
+import com.techrevamp.models.Order;
 import com.techrevamp.models.User;
+import com.techrevamp.repositories.OrderRepository;
 import com.techrevamp.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,9 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+    
+    @Autowired
+    private OrderRepository orderRepository;
 
     public List<User> getAllUsers() {
         return userRepository.findAll();
@@ -62,5 +67,10 @@ public class UserService {
 
     public List<User> findLoggedInUsers() {
         return userRepository.findLoggedInUsers();
+    }
+    
+    public List<Order> getOrdersByUserId(Long userId) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("No se encontraron órdenes"));
+        return orderRepository.findOrderByUser(user);
     }
 }

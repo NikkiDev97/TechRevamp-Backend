@@ -3,6 +3,8 @@ package com.techrevamp.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 //@Data engloba todo lo que necesitamos en un models
 @Data
 @Entity
@@ -29,4 +31,8 @@ public class User {
 
     @Column(name = "is_logged_in", nullable = false)
     private Boolean isLoggedIn = false;
+    
+    // user.orders.ordersCode
+    @OneToMany(mappedBy = "user")
+    private List<Order> orders;
 }

@@ -55,11 +55,6 @@ public class OrderController {
         return ResponseEntity.noContent().build();
     }
 
-    /*@GetMapping("/user/{userId}")
-    public List<Order> getOrdersByUserId(@PathVariable Long userId) {
-        return orderService.getOrdersByUserId(userId);
-    }*/
-
     //formato ISO de fecha (yyyy-MM-dd).
     @GetMapping("/date/{orderDate}")
     public List<Order> getOrdersByOrderDate(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date orderDate) {
