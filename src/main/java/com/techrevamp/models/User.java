@@ -23,6 +23,9 @@ public class User {
 
     @Column(name = "password", nullable = false)
     private String password;
+    
+    @Column(name = "phone", nullable = false)
+    private String phone;
 
     @Column(name = "is_logged_in", nullable = false)
     private Boolean isLoggedIn = false;
