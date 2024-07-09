@@ -12,15 +12,17 @@ import java.util.List;
 
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Long> {
-  
-//  List<Order> findOrderByUserId(Long userId);
+    List<Order> findByUser(User user);
+//  List<Order> findByUser(User user);
+//
 //  @Query("SELECT o FROM Order o WHERE o.userId = :userId")
 //  List<Order> findOrderByUserId(@Param("userId") Long userId);
-  List<Order> findOrderByUser(User user);
-  
-  @Query("SELECT o FROM Order o WHERE o.orderDate = :orderDate")
-  List<Order> findByOrderDate(@Param("orderDate") Date orderDate);
-
-  @Query("SELECT o FROM Order o WHERE o.orderCode = :orderCode")
-  Order findByOrderCode(@Param("orderCode") String orderCode);
+//
+//  List<Order> findOrderByUser(User user);
+//
+//  @Query("SELECT o FROM Order o WHERE o.orderDate = :orderDate")
+//  List<Order> findByOrderDate(@Param("orderDate") Date orderDate);
+//
+//  @Query("SELECT o FROM Order o WHERE o.orderCode = :orderCode")
+//  Order findByOrderCode(@Param("orderCode") String orderCode);
 }

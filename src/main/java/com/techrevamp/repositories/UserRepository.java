@@ -10,20 +10,19 @@ import java.util.List;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-  
-  @Query("SELECT u FROM User u WHERE u.email LIKE %:email%")
-  List<User> findByEmail(@Param("email") String email);
 
-  @Query("SELECT u FROM User u WHERE u.firstName LIKE %:firstName%")
-  List<User> findByFirstName(@Param("firstName") String firstName);
+    @Query("SELECT u FROM User u WHERE u.email LIKE %:email%")
+    List<User> findByEmail(@Param("email") String email);
 
-  @Query("SELECT u FROM User u WHERE u.lastName LIKE %:lastName%")
-  List<User> findByLastName(@Param("lastName") String lastName);
+    @Query("SELECT u FROM User u WHERE u.firstName LIKE %:firstName%")
+    List<User> findByFirstName(@Param("firstName") String firstName);
 
-  @Query("SELECT u FROM User u WHERE CONCAT(u.firstName, ' ', u.lastName) LIKE %:fullName%")
-  List<User> findByFullName(@Param("fullName") String fullName);
+    @Query("SELECT u FROM User u WHERE u.lastName LIKE %:lastName%")
+    List<User> findByLastName(@Param("lastName") String lastName);
 
-  @Query("SELECT u FROM User u WHERE u.isLoggedIn = true ")
-  List<User> findLoggedInUsers();
+    @Query("SELECT u FROM User u WHERE CONCAT(u.firstName, ' ', u.lastName) LIKE %:fullName%")
+    List<User> findByFullName(@Param("fullName") String fullName);
 
+    @Query("SELECT u FROM User u WHERE u.isLoggedIn = true ")
+    List<User> findLoggedInUsers();
 }

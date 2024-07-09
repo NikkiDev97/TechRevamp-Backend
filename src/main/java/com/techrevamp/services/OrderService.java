@@ -69,11 +69,11 @@ public class OrderService {
 //    }
     
 
-    public List<Order> getOrdersByOrderDate(Date orderDate) {
-        return orderRepository.findByOrderDate(orderDate);
-    }
-
-    public Order getOrderByOrderCode(String orderCode) {
-        return orderRepository.findByOrderCode(orderCode);
-    }
+//    public List<Order> getOrdersByOrderDate(Date orderDate) {
+//        return orderRepository.findByOrderDate(orderDate);
+//    }
+//
+//    public Order getOrderByOrderCode(String orderCode) {
+//        return orderRepository.findByOrderCode(orderCode);
+//    }
 }

@@ -55,15 +55,15 @@ public class OrderController {
         return ResponseEntity.noContent().build();
     }
 
-    //formato ISO de fecha (yyyy-MM-dd).
-    @GetMapping("/date/{orderDate}")
-    public List<Order> getOrdersByOrderDate(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date orderDate) {
-        return orderService.getOrdersByOrderDate(orderDate);
-    }
-
-    @GetMapping("/code/{orderCode}")
-    public Order getOrderByOrderCode(@PathVariable String orderCode) {
-        return orderService.getOrderByOrderCode(orderCode);
-    }
+//    //formato ISO de fecha (yyyy-MM-dd).
+//    @GetMapping("/date/{orderDate}")
+//    public List<Order> getOrdersByOrderDate(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date orderDate) {
+//        return orderService.getOrdersByOrderDate(orderDate);
+//    }
+//
+//    @GetMapping("/code/{orderCode}")
+//    public Order getOrderByOrderCode(@PathVariable String orderCode) {
+//        return orderService.getOrderByOrderCode(orderCode);
+//    }
 
 }
