@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 //@Data engloba todo lo que necesitamos en un models
 @Data
@@ -28,4 +29,7 @@ public class Product {
 
     @Column(name = "stock", nullable = false)
     private int stock;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private List<Review> reviews;
 }

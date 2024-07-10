@@ -1,7 +1,9 @@
 package com.techrevamp.controllers;
 
 import com.techrevamp.models.Product;
+import com.techrevamp.models.Review;
 import com.techrevamp.services.ProductService;
+import com.techrevamp.services.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +17,9 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private ReviewService reviewService;
 
     @GetMapping
     public List<Product> getAllProducts() {
