@@ -61,19 +61,12 @@ public class OrderService {
     public void deleteOrder(Long orderId) {
         orderRepository.deleteById(orderId);
     }
-    
-    
-//    public List<Order> getOrdersByUserId(Long userId) {
-//        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("No se encontraron órdenes"));
-//        return user.getOrders();
-//    }
-    
 
-//    public List<Order> getOrdersByOrderDate(Date orderDate) {
-//        return orderRepository.findByOrderDate(orderDate);
-//    }
-//
-//    public Order getOrderByOrderCode(String orderCode) {
-//        return orderRepository.findByOrderCode(orderCode);
-//    }
+    public List<Order> getOrdersByOrderDate(Date orderDate) {
+        return orderRepository.findByOrderDate(orderDate);
+    }
+
+    public Order getOrderByOrderCode(String orderCode) {
+        return orderRepository.findByOrderCode(orderCode);
+    }
 }

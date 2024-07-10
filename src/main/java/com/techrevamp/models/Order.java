@@ -9,7 +9,6 @@ import lombok.*;
 
 import java.sql.Timestamp;
 
-//@Data engloba todo lo que necesitamos en un models
 @Data
 @Entity
 @Table(name = "orders")
