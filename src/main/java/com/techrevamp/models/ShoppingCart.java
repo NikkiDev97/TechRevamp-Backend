@@ -3,7 +3,10 @@ package com.techrevamp.models;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.util.Date;
+
+
 //@Data engloba todo lo que necesitamos en un models
 @Data
 @Entity
@@ -18,5 +21,5 @@ public class ShoppingCart {
     private User userId;
 
     @Column(name = "creation_date", nullable = false)
-    private Timestamp creationDate;
+    private LocalDate creationDate;
 }

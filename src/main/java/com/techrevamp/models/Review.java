@@ -4,8 +4,10 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import lombok.*;
+import org.springframework.cglib.core.Local;
 
-import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.util.Date;
 
 //@Data engloba todo lo que necesitamos en un models
 @Data
@@ -33,5 +35,5 @@ public class Review {
   private String comment;
 
   @Column(name = "review_date", nullable = false)
-  private Timestamp reviewDate;
+  private LocalDate reviewDate;
 }
