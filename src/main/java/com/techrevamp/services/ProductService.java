@@ -11,12 +11,8 @@ import java.util.Optional;
 @Service
 public class ProductService {
 
-    private final ProductRepository productRepository;
-
     @Autowired
-    public ProductService(ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
+    private ProductRepository productRepository;
 
     public List<Product> getAllProducts() {
         return productRepository.findAll();
@@ -44,19 +40,19 @@ public class ProductService {
         return null;
     }
 
-//    public void deleteProduct(Long productId) {
-//        productRepository.deleteById(productId);
-//    }
-//
-//    public List<Product> getProductsByCategory(String category) {
-//        return productRepository.findByCategory(category);
-//    }
-//
-//    public List<Product> getProductsByName(String name) {
-//        return productRepository.findByName(name);
-//    }
-//
-//    public List<Product> getProductsByPriceRange(Double minPrice, Double maxPrice) {
-//        return productRepository.findByPriceBetween(minPrice, maxPrice);
-//    }
+    public void deleteProduct(Long productId) {
+        productRepository.deleteById(productId);
+    }
+
+    public List<Product> getProductsByCategory(String category) {
+        return productRepository.findByCategory(category);
+    }
+
+    public List<Product> getProductsByName(String name) {
+        return productRepository.findByName(name);
+    }
+
+    public List<Product> getProductsByPriceRange(Double minPrice, Double maxPrice) {
+        return productRepository.findByPriceBetween(minPrice, maxPrice);
+    }
 }
