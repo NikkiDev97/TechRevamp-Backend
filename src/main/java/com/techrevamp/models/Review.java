@@ -2,6 +2,7 @@ package com.techrevamp.models;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
@@ -24,12 +25,14 @@ public class Review {
     @JoinColumn(name = "product_id", nullable = false)
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "productId")
     @JsonIdentityReference(alwaysAsId = true)
+    @JsonProperty("productId")
     private Product product;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "userId")
     @JsonIdentityReference(alwaysAsId = true)
+    @JsonProperty("userId")
     private User user;
 
     @Column(name = "rating", nullable = false)
