@@ -9,6 +9,7 @@ import jakarta.validation.constraints.Min;
 import lombok.Data;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 
 //@Data engloba todo lo que necesitamos en un models
 @Data
@@ -40,7 +41,7 @@ public class Review {
     private String comment;
 
     @Column(name = "review_date", nullable = false)
-    private Timestamp reviewDate;
+    private LocalDate reviewDate;
 
     public void setId(Long reviewId) {
     }
