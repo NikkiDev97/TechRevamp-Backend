@@ -1,6 +1,7 @@
 package com.techrevamp.services;
 
 import com.techrevamp.models.Review;
+import com.techrevamp.repositories.ProductRepository;
 import com.techrevamp.repositories.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,12 +12,11 @@ import java.util.Optional;
 @Service
 public class ReviewService {
 
-    private final ReviewRepository reviewRepository;
+    @Autowired
+    private ReviewRepository reviewRepository;
 
     @Autowired
-    public ReviewService(ReviewRepository reviewRepository) {
-        this.reviewRepository = reviewRepository;
-    }
+    private ProductRepository productRepository;
 
     // Método para obtener todas las reviews
     public List<Review> getAllReviews() {
@@ -35,17 +35,8 @@ public class ReviewService {
     }
 
     // Método para actualizar una review existente
-    public Review updateReview(Long reviewId, Review review) {
-        Optional<Review> reviewOptional = reviewRepository.findById(reviewId);
-        if (reviewOptional.isPresent()) {
-            Review existingReview = reviewOptional.get();
-            existingReview.setProduct(review.getProduct());
-            existingReview.setUser(review.getUser());
-            existingReview.setRating(review.getRating());
-            existingReview.setComment(review.getComment());
-            return reviewRepository.save(existingReview);
-        }
-        return null;
+    public Review updateReview(Review review) {
+        return reviewRepository.save(review);
     }
 
     // Método para eliminar una review por su ID
