@@ -1,6 +1,12 @@
 package com.techrevamp.models;
 
 import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.techrevamp.config.UserIdToUserDeserializer;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,6 +26,7 @@ public class Order {
     @JoinColumn(name = "user_id", nullable = false)
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "userId")
     @JsonIdentityReference(alwaysAsId = true)
+    @JsonDeserialize(using = UserIdToUserDeserializer.class)
     @JsonProperty("userId")
     private User user;
 
