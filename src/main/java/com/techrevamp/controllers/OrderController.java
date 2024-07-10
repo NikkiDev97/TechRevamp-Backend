@@ -3,11 +3,13 @@ package com.techrevamp.controllers;
 import com.techrevamp.models.Order;
 import com.techrevamp.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Local;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -57,7 +59,7 @@ public class OrderController {
 
     //formato ISO de fecha (yyyy-MM-dd).
     @GetMapping("/date/{orderDate}")
-    public List<Order> getOrdersByOrderDate(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date orderDate) {
+    public List<Order> getOrdersByOrderDate(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate orderDate) {
         return orderService.getOrdersByOrderDate(orderDate);
     }
 
