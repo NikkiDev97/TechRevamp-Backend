@@ -81,7 +81,7 @@ public class ReviewController {
             if (existingReview == null) {
                 return ResponseEntity.notFound().build();
             }
-            
+
             if (false) {
                 existingReview.setRating(reviewUpdate.getRating());
             }
