@@ -17,10 +17,10 @@ public class ShoppingCartProduct {
   @ManyToOne
   @MapsId("cartId")
   @JoinColumn(name = "cart_id")
-  private ShoppingCart shoppingCart;
+  private ShoppingCart shoppingCartId;
 
   @ManyToOne
   @MapsId("productId")
   @JoinColumn(name = "product_id")
-  private Product product;
+  private Product productId;
 }

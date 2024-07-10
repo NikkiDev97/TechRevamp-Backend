@@ -1,9 +1,15 @@
 package com.techrevamp.models;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.util.Date;
+
+
 //@Data engloba todo lo que necesitamos en un models
 @Data
 @Entity
@@ -11,12 +17,14 @@ import java.sql.Timestamp;
 public class ShoppingCart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long cart_id;
+    private Long cartId;
 
-    @OneToOne
-    @JoinColumn(name = "user_id", nullable = false, unique = true)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "userId")
+    @JsonIdentityReference(alwaysAsId = true)
     private User user;
 
     @Column(name = "creation_date", nullable = false)
-    private Timestamp creationDate;
+    private LocalDate creationDate;
 }

@@ -1,20 +1,25 @@
 package com.techrevamp.models;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.*;
 
-
-//@Data engloba todo lo que necesitamos en un models
 @Data
 @Entity
 @Table(name = "shipping_addresses")
 public class ShippingAddress {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long address_id;
+  private Long addressId;
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "user_id", nullable = false)
+  @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "userId")
+  @JsonIdentityReference(alwaysAsId = true)
+  @JsonProperty("userId")
   private User user;
 
   @Column(name = "street", nullable = false)

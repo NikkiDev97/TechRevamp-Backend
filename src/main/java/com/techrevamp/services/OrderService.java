@@ -7,6 +7,7 @@ import com.techrevamp.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -43,11 +44,11 @@ public class OrderService {
             if (updatedOrder.getOrderCode() != null) {
                 existingOrder.setOrderCode(updatedOrder.getOrderCode());
             }
-            User updatedUser = updatedOrder.getUserId();
+            User updatedUser = updatedOrder.getUser();
             if (updatedUser != null) {
                 Optional<User> userOptional = userRepository.findById(updatedUser.getUserId());
                 if (userOptional.isPresent()) {
-                    existingOrder.setUserId(userOptional.get());
+                    existingOrder.setUser(userOptional.get());
                 } else {
                     throw new RuntimeException("El usuario especificado no existe en la base de datos.");
                 }
@@ -62,11 +63,7 @@ public class OrderService {
         orderRepository.deleteById(orderId);
     }
 
-    /*public List<Order> getOrdersByUserId(Long userId) {
-        return orderRepository.findByUserId(userId);
-    }*/
-
-    public List<Order> getOrdersByOrderDate(Date orderDate) {
+    public List<Order> getOrdersByOrderDate(LocalDate orderDate) {
         return orderRepository.findByOrderDate(orderDate);
     }
 

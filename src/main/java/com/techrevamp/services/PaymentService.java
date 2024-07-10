@@ -39,7 +39,7 @@ public class PaymentService {
         Optional<Payment> paymentOptional = paymentRepository.findById(paymentId);
         if (paymentOptional.isPresent()) {
             Payment existingPayment = paymentOptional.get();
-            existingPayment.setOrder(payment.getOrder());
+            existingPayment.setOrderId(payment.getOrderId());
             existingPayment.setAmount(payment.getAmount());
             existingPayment.setPaymentMethod(payment.getPaymentMethod());
             return paymentRepository.save(existingPayment);

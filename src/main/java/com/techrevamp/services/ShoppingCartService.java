@@ -40,8 +40,7 @@ public class ShoppingCartService {
     public void deleteShoppingCart(Long cartId) {
         shoppingCartRepository.deleteById(cartId);
     }
-    
-    
+
 //    // Método para obtener productos en un carrito en específico
 //    public List<ShoppingCartProduct> getProductsInCart(Long cartId) {
 //        return shoppingCartRepository.findProductsByCartId(cartId);
@@ -58,4 +57,22 @@ public class ShoppingCartService {
 //    public void updateProductQuantityInCart(Long cartId, Long productId, int quantity) {
 //        shoppingCartRepository.updateProductQuantityInCart(cartId, productId, quantity);
 //    }
+
+    // Método para actualizar un carrito de compra
+    @Transactional
+    public ShoppingCart updateShoppingCart(ShoppingCart shoppingCart) {
+        // Verificar si el carrito existe
+        Long cartId = shoppingCart.getCartId();
+        Optional<ShoppingCart> existingCartOptional = shoppingCartRepository.findById(cartId);
+        if (existingCartOptional.isEmpty()) {
+            throw new RuntimeException("Shopping cart not found with id: " + cartId);
+        }
+
+        // Actualizar el carrito existente con los nuevos datos
+        ShoppingCart existingCart = existingCartOptional.get();
+        existingCart.setUser(shoppingCart.getUser()); // Actualiza el usuario si es necesario
+        existingCart.setCreationDate(shoppingCart.getCreationDate()); // Actualiza la fecha de creación
+
+        return shoppingCartRepository.save(existingCart);
+    }
 }

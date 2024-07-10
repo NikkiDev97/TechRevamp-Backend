@@ -1,9 +1,10 @@
 package com.techrevamp.models;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Data;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 //@Data engloba todo lo que necesitamos en un models
 @Data
@@ -25,4 +26,10 @@ public class Product {
 
     @Column(name = "category", nullable = false)
     private String category;
+
+    @Column(name = "stock", nullable = false)
+    private int stock;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private List<Review> reviews;
 }

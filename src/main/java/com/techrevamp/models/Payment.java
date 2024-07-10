@@ -3,7 +3,9 @@ package com.techrevamp.models;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.util.Date;
+
 
 //@Data engloba todo lo que necesitamos en un models
 @Data
@@ -16,7 +18,7 @@ public class Payment {
 
     @OneToOne
     @JoinColumn(name = "order_id", nullable = false, unique = true)
-    private Order order;
+    private Order orderId;
 
     @Column(name = "amount", nullable = false)
     private Double amount;
@@ -25,5 +27,5 @@ public class Payment {
     private String paymentMethod;
 
     @Column(name = "payment_date", nullable = false)
-    private Timestamp paymentDate;
+    private LocalDate paymentDate;
 }

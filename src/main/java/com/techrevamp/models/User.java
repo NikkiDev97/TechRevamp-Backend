@@ -1,12 +1,15 @@
 package com.techrevamp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
-//@Data engloba todo lo que necesitamos en un models
+import java.util.List;
+
 @Data
 @Entity
 @Table(name = "users")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +26,13 @@ public class User {
 
     @Column(name = "password", nullable = false)
     private String password;
+    
+    @Column(name = "phone", nullable = false)
+    private String phone;
 
     @Column(name = "is_logged_in", nullable = false)
     private Boolean isLoggedIn = false;
+
+    public void setOrders(List<Order> orders) {
+    }
 }
