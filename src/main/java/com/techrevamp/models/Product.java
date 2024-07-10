@@ -1,7 +1,7 @@
 package com.techrevamp.models;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Data;
 
 import java.math.BigDecimal;
 
@@ -25,7 +25,7 @@ public class Product {
 
     @Column(name = "category", nullable = false)
     private String category;
-    
+
     @Column(name = "stock", nullable = false)
     private int stock;
 }
