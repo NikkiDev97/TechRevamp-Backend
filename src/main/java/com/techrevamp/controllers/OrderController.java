@@ -1,7 +1,9 @@
 package com.techrevamp.controllers;
 
 import com.techrevamp.models.Order;
+import com.techrevamp.models.User;
 import com.techrevamp.services.OrderService;
+import com.techrevamp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -17,6 +19,9 @@ public class OrderController {
 
     @Autowired
     private OrderService orderService;
+    
+    @Autowired
+    private UserService userService;
 
     @GetMapping
     public List<Order> getAllOrders() {
@@ -35,7 +40,23 @@ public class OrderController {
 
     @PostMapping
     public ResponseEntity<Order> createOrder(@RequestBody Order order) {
+        // Verificar si el campo 'user' está correctamente inicializado
+//        if(order.getUser().getUserId() != null){
+//            Long userId = order.getUser().getUserId();
+//            User user = userService.getUserById(userId);
+//            order.setUser(user);
+//        } else {
+//            return ResponseEntity.notFound().build();
+//        }
+        
+        if (order.getUser() == null){
+            return ResponseEntity.notFound().build();
+        }
+        
+        // Crear la orden
         Order createdOrder = orderService.createOrder(order);
+        
+        // Devolver respuesta con la orden creada
         return ResponseEntity.status(HttpStatus.CREATED).body(createdOrder);
     }
 
