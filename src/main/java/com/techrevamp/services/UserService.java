@@ -66,8 +66,12 @@ public class UserService {
     }
 
     // Buscar usuarios por email
-    public List<User> findByEmail(String email) {
-        return userRepository.findByEmail(email);
+    public User findByEmail(String email) {
+       // if(!userRepository.findByEmail(email).isEmpty()) {
+            return userRepository.findByEmail(email);
+       // }else{
+        //    return null;
+       // }
     }
 
     // Buscar usuarios por primer nombre
