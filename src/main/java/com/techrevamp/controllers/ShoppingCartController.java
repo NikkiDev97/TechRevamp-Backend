@@ -33,14 +33,21 @@ public class ShoppingCartController {
     }
 
     // Endpoint para actualizar un carrito de compra existente
-//    @PutMapping("/{cartId}")
-//    public ShoppingCart updateShoppingCart(@PathVariable Long cartId, @RequestBody ShoppingCart shoppingCart) {
-//        return shoppingCartService.updateShoppingCart(cartId, shoppingCart);
-//    }
+    @PutMapping("/{cartId}")
+    public ShoppingCart updateShoppingCart(@PathVariable Long cartId, @RequestBody ShoppingCart shoppingCart) {
+        // Asignar el cartId al shoppingCart para asegurar que se actualice el carrito correcto
+        shoppingCart.setCartId(cartId);
+        return shoppingCartService.updateShoppingCart(shoppingCart);
+    }
 
     // Endpoint para eliminar un carrito de compra por su ID
-    @DeleteMapping("/{cartId}")
-    public void deleteShoppingCart(@PathVariable Long cartId) {
-        shoppingCartService.deleteShoppingCart(cartId);
-    }
+//    @Transactional
+//    public void deleteProductFromCart(Long cartId, Long productId) {
+//        EntityManager entityManager = null;
+//        entityManager.createQuery("DELETE FROM ShoppingCartProduct p WHERE p.cart.cartId = :cartId AND p.product.productId = :productId")
+//                .setParameter("cartId", cartId)
+//                .setParameter("productId", productId)
+//                .executeUpdate();
+//    }
+
 }
