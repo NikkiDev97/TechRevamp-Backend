@@ -29,6 +29,12 @@ public class Product {
 
     @Column(name = "stock", nullable = false)
     private int stock;
+    
+    @Column(name = "image", nullable = false)
+    private String image;
+    
+    @Column(name = "tittle", nullable = false)
+    private String tittle;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<Review> reviews;

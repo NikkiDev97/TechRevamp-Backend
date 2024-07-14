@@ -50,6 +50,7 @@ public class UserService {
                 existingUser.setEmail(user.getEmail());
                 existingUser.setPassword(user.getPassword());
                 existingUser.setPhone(user.getPhone());
+                existingUser.setIsLoggedIn(user.getIsLoggedIn());
                 return userRepository.save(existingUser);
             } catch (Exception e) {
                 // Manejar la excepción según sea necesario (por ejemplo, registrarla)
@@ -66,8 +67,12 @@ public class UserService {
     }
 
     // Buscar usuarios por email
-    public List<User> findByEmail(String email) {
-        return userRepository.findByEmail(email);
+    public User findByEmail(String email) {
+       // if(!userRepository.findByEmail(email).isEmpty()) {
+            return userRepository.findByEmail(email);
+       // }else{
+        //    return null;
+       // }
     }
 
     // Buscar usuarios por primer nombre
