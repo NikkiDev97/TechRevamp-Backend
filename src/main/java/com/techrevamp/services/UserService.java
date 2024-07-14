@@ -50,6 +50,7 @@ public class UserService {
                 existingUser.setEmail(user.getEmail());
                 existingUser.setPassword(user.getPassword());
                 existingUser.setPhone(user.getPhone());
+                existingUser.setIsLoggedIn(user.getIsLoggedIn());
                 return userRepository.save(existingUser);
             } catch (Exception e) {
                 // Manejar la excepción según sea necesario (por ejemplo, registrarla)
