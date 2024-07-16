@@ -41,23 +41,6 @@ public class ShoppingCartService {
         shoppingCartRepository.deleteById(cartId);
     }
 
-//    // Método para obtener productos en un carrito en específico
-//    public List<ShoppingCartProduct> getProductsInCart(Long cartId) {
-//        return shoppingCartRepository.findProductsByCartId(cartId);
-//    }
-//
-//    // Método para eliminar un producto del carrito específico
-//    @Transactional
-//    public void removeProductFromCart(Long cartId, Long productId) {
-//        shoppingCartRepository.deleteProductFromCart(cartId, productId);
-//    }
-//
-//    // Método para actualizar la cantidad de un producto en carrito específico
-//    @Transactional
-//    public void updateProductQuantityInCart(Long cartId, Long productId, int quantity) {
-//        shoppingCartRepository.updateProductQuantityInCart(cartId, productId, quantity);
-//    }
-
     // Método para actualizar un carrito de compra
     @Transactional
     public ShoppingCart updateShoppingCart(ShoppingCart shoppingCart) {
